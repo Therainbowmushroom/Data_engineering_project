@@ -55,3 +55,4 @@ df_lung.to_parquet('lung_cancer_dataset_pyarrow.parquet', engine='pyarrow')
 
 table = pa.read_table('lung_cancer_dataset_pyarrow.parquet')
 print(table)
+
