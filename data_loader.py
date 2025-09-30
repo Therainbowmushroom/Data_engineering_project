@@ -13,7 +13,7 @@ dict_rename = {}
 for col in columns:
     dict_rename[col] = col.lower().rstrip().replace(' ', '_')
 df_lung.rename(columns=dict_rename, inplace=True)
-df_lung.columns
+print(df_lung.columns)
 
 df_lung.isnull().sum()  # пропусков в столбцах нет
 print(df_lung.duplicated().sum())  # полных дубликатов в датасете 429
@@ -40,7 +40,7 @@ column_age_lung = [
     ]
 for column in column_age_lung:    
     df_lung[column] = df_lung[column].map({2: True, 1: False}).astype(bool)
-df_lung.info()
+print(df_lung.info())
 
 # Замена значений в столбце lung_cancer с YES и NO на True и False. 
 # И замена значений в gender с M и F на 1 и 0 соотвественно.
@@ -49,7 +49,7 @@ df_lung['lung_cancer'] = df_lung['lung_cancer'].map(
     {'YES': True, 'NO': False}
     ).astype(bool)
 df_lung['gender'] = df_lung['gender'].map({'M': 1, 'F': 0}).astype('category')
-df_lung.info()
+print(df_lung.info())
 
 df_lung.to_parquet('lung_cancer_dataset_pyarrow.parquet', engine='pyarrow')
 
