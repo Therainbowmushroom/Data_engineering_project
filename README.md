@@ -21,4 +21,9 @@ https://drive.google.com/file/d/1zmNAMYzerjdrCZs51MmoWiHfvog-xdi3/view?usp=shari
 Приведённые типы данных в датафрейме:
 
 
+<img width="522" height="512" alt="image" src="https://github.com/user-attachments/assets/41070401-93f1-4051-8a1f-42c86b3ad4ee" />
+
+
+
+
 
