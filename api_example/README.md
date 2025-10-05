@@ -2,6 +2,8 @@
 
 Ссылка на документацию по iDigBio Search API: ```https://github.com/idigbio/idigbio-search-api/wiki```
 
+API поиска iDigBio предоставляет программный доступ к данным портала iDigBio, позволяя пользователям искать и извлекать данные из базы данных iDigBio. Это база данных оцифрованных биоколлекций (Integrated Digitized Biocollections).
+
 Скриншот вывода скрипта api_reader.py:
 
 <img width="1431" height="616" alt="image" src="https://github.com/user-attachments/assets/f9c96bfc-2bde-4cc8-8ce0-5405339610af" />
