@@ -18,10 +18,10 @@ dates = []
 text_news_list = []
 links = []
 
-for new in news:
+for line in news:
 
-    date = new.select_one('time') if new else None
-    link_all = new.select_one('a') if new else None
+    date = line.select_one('time') if line else None
+    link_all = line.select_one('a') if line else None
     text_news = link_all.text.strip() if link_all else None
     link = link_all['href'] if link_all else None
 
@@ -35,3 +35,4 @@ df_news = pd.DataFrame(list(zip(dates, links, text_news_list)),
 print(df_news.head())
 
 df_news.to_csv('df_news_samara', index=False)
+
