@@ -25,5 +25,9 @@ https://drive.google.com/file/d/1zmNAMYzerjdrCZs51MmoWiHfvog-xdi3/view?usp=shari
 
 
 
+Ссылка на рендер ноутбука с проведением EDA "EDA.ipynb": 
+[Рендер](https://nbviewer.org/github/Therainbowmushroom/Data_engineering_project/blob/main/notebooks/EDA.ipynb)
+
+
 
 
