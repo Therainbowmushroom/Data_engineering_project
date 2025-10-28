@@ -43,12 +43,12 @@ for column in column_age_lung:
 print(df_lung.info())
 
 # Замена значений в столбце lung_cancer с YES и NO на True и False. 
-# И замена значений в gender с M и F на 1 и 0 соотвественно.
+# И замена значений в gender с M и F на True и False соотвественно.
 
 df_lung['lung_cancer'] = df_lung['lung_cancer'].map(
     {'YES': True, 'NO': False}
     ).astype(bool)
-df_lung['gender'] = df_lung['gender'].map({'M': 1, 'F': 0}).astype('category')
+df_lung['gender'] = df_lung['gender'].map({'M': True, 'F': False}).astype('bool')
 print(df_lung.info())
 
 df_lung.to_parquet('lung_cancer_dataset_pyarrow.parquet', engine='pyarrow')
