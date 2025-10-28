@@ -1,6 +1,9 @@
 # Data_engineering_project
+## О датасете
 **Ссылка на датасет:**
 https://drive.google.com/file/d/1zmNAMYzerjdrCZs51MmoWiHfvog-xdi3/view?usp=sharing
+
+## Загрузка виртуального окружения
 
 Для загрузки рабочего окружения для работы с датасетом используйте файл environment.yml в репозитории и команду в терминале: 
 
