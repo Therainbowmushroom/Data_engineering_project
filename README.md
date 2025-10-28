@@ -1,7 +1,12 @@
 # Data_engineering_project
 ## О датасете
-**Ссылка на датасет:**
-https://drive.google.com/file/d/1zmNAMYzerjdrCZs51MmoWiHfvog-xdi3/view?usp=sharing
+**Ссылка на датасет:** [Google Диск](https://drive.google.com/file/d/1zmNAMYzerjdrCZs51MmoWiHfvog-xdi3/view?usp=sharing)
+
+**Информация о датасете:** [Kaggle](https://www.kaggle.com/datasets/akashnath29/lung-cancer-dataset/data)
+
+Рак лёгких остаётся одной из самых распространённых и смертельных форм рака во всём мире, создавая серьёзные трудности для ранней диагностики и эффективного лечения. Этот набор данных представляет собой информацию о 20000 пациентах с раком лёгких и без, о поле возрасте и клинической картине заболевания.
+
+
 
 ## Загрузка виртуального окружения
 
