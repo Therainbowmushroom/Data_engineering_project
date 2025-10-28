@@ -27,19 +27,19 @@ python data_loader.py
 ```
 print(df_lung.head(10))
 ```
-
+<p align="center">
 <img width="1218" height="296" alt="image" src="https://github.com/user-attachments/assets/c47e4ff4-85cf-4264-9dd8-10d4b07ea481" />
-
+</p>
 Исходные типы данных в датафрейме:
 
-
+<p align="center">
 <img width="520" height="510" alt="image" src="https://github.com/user-attachments/assets/b3ace559-f1f3-43d4-b592-72746b3c38ab" />
-
+</p>
 Приведённые типы данных в датафрейме:
 
-
+<p align="center">
 <img width="459" height="464" alt="image" src="https://github.com/user-attachments/assets/e5f03e63-8c72-4395-9714-8b96ec5c0004" />
-
+</p>
 
 ## Загрузка датасета в базу данных:
 Для создания подключения использовался файл .env:
