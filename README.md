@@ -121,5 +121,156 @@ Data_engineering_project/
 │   └── transform.py   # Приведение типов данных исходного датасета
 
 ```
+**Описание компонентов модуля ETL**
 
+
+
+
+
+Вывод в терминале:
+```
+Идёт загрузка данных с Google Drive...
+Датасет загружен успешно
+Первые 10 строк датасета 
+   GENDER  AGE  SMOKING  YELLOW_FINGERS  ANXIETY  ...  COUGHING  SHORTNESS OF BREATH  SWALLOWING DIFFICULTY  CHEST PAIN  LUNG_CANCER
+0      M   69        2               1        1  ...         2                    2                      1           1          YES
+1      M   71        2               2        1  ...         1                    2                      2           1          YES
+2      M   61        2               1        1  ...         1                    2                      2           2           NO
+3      M   55        2               2        1  ...         1                    2                      2           2          YES
+4      F   56        2               1        1  ...         1                    2                      2           2          YES
+5      F   53        2               2        2  ...         2                    2                      2           2           NO
+6      F   54        2               2        2  ...         1                    2                      1           1          YES
+7      M   69        1               2        1  ...         1                    2                      1           1          YES
+8      F   63        2               2        1  ...         2                    2                      1           1          YES
+9      M   60        1               1        2  ...         2                    2                      1           2          YES
+
+[10 rows x 16 columns]
+Идёт валидация данных...
+Идёт валидация данных...
+Данные прошли валидацию успешно!
+В данных обнаружено 429 дубликатов. Они будут сохранены в сырых данных.
+Идёт сохранение данных...
+Идёт чтение датасета из файла ./data/raw/df_lung.csv...
+Данные успешно прочитаны
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 20000 entries, 0 to 19999
+Data columns (total 16 columns):
+ #   Column                 Non-Null Count  Dtype
+---  ------                 --------------  -----
+ 0   GENDER                 20000 non-null  object
+ 1   AGE                    20000 non-null  int64
+ 2   SMOKING                20000 non-null  int64
+ 3   YELLOW_FINGERS         20000 non-null  int64
+ 4   ANXIETY                20000 non-null  int64
+ 5   PEER_PRESSURE          20000 non-null  int64
+ 6   CHRONIC DISEASE        20000 non-null  int64
+ 7   FATIGUE                20000 non-null  int64
+ 8   ALLERGY                20000 non-null  int64
+ 9   WHEEZING               20000 non-null  int64
+ 10  ALCOHOL CONSUMING      20000 non-null  int64
+ 11  COUGHING               20000 non-null  int64
+ 12  SHORTNESS OF BREATH    20000 non-null  int64
+ 13  SWALLOWING DIFFICULTY  20000 non-null  int64
+ 14  CHEST PAIN             20000 non-null  int64
+ 15  LUNG_CANCER            20000 non-null  object
+dtypes: int64(14), object(2)
+memory usage: 2.4+ MB
+None
+Идёт приведение названий колонок к общему виду...
+Идёт удаление дубликатов...
+Найдено дубликатов: 429
+Успешно удалено 429 дубликатов
+Идёт приведение типов и значений
+Идёт приведения типов бинарных колонок к типу bool
+Идёт приведение типа колонки lung_cancer к типу bool
+Идёт замена колонки gender на колонку is_female
+Идёт сохранение датасета как ./data/raw/df_lung_preprocess.csv
+Десять строк обработанного датасета:
+   id  age  smoking  yellow_fingers  anxiety  peer_pressure  ...  coughing  shortness_of_breath  swallowing_difficulty  chest_pain  lung_cancer  is_female0   1   69     True           False    False           True  ...      True                 True                  False       False         True      False1   2   71     True            True    False          False  ...     False                 True                   True       False         True      False2   3   61     True           False    False           True  ...     False                 True                   True        True        False      False3   4   55     True            True    False           True  ...     False                 True                   True        True         True      False4   5   56     True           False    False          False  ...     False                 True                   True        True         True       True5   6   53     True            True     True           True  ...      True                 True                   True        True        False       True6   7   54     True            True     True           True  ...     False                 True                  False       False         True       True7   8   69    False            True    False           True  ...     False                 True                  False       False         True      False8   9   63     True            True    False          False  ...      True                 True                  False       False         True       True9  10   60    False           False     True           True  ...      True                 True                  False        True         True      False
+[10 rows x 17 columns]
+<class 'pandas.core.frame.DataFrame'>
+Index: 19571 entries, 0 to 19999
+Data columns (total 17 columns):
+ #   Column                 Non-Null Count  Dtype
+---  ------                 --------------  -----
+ 0   id                     19571 non-null  int64
+ 1   age                    19571 non-null  int64
+ 2   smoking                19571 non-null  bool
+ 3   yellow_fingers         19571 non-null  bool
+ 4   anxiety                19571 non-null  bool
+ 5   peer_pressure          19571 non-null  bool
+ 6   chronic_disease        19571 non-null  bool
+ 7   fatigue                19571 non-null  bool
+ 8   allergy                19571 non-null  bool
+ 9   wheezing               19571 non-null  bool
+ 10  alcohol_consuming      19571 non-null  bool
+ 11  coughing               19571 non-null  bool
+ 12  shortness_of_breath    19571 non-null  bool
+ 13  swallowing_difficulty  19571 non-null  bool
+ 14  chest_pain             19571 non-null  bool
+ 15  lung_cancer            19571 non-null  bool
+ 16  is_female              19571 non-null  bool
+dtypes: bool(15), int64(2)
+memory usage: 745.4 KB
+None
+Идёт чтение датасета...
+Данные прошли валидацию успешно!
+Данные сохранены в файл ./data/processed/df_lung_preprocess.parquet
+Все необходимые учётные данные присутствуют
+Движок БД создан и подключение успешно:
+Данные загружены из Parquet файла
+Типы данных в загруженном датасете:
+id                       int64
+age                      int64
+smoking                   bool
+yellow_fingers            bool
+anxiety                   bool
+peer_pressure             bool
+chronic_disease           bool
+fatigue                   bool
+allergy                   bool
+wheezing                  bool
+alcohol_consuming         bool
+coughing                  bool
+shortness_of_breath       bool
+swallowing_difficulty     bool
+chest_pain                bool
+lung_cancer               bool
+is_female                 bool
+dtype: object
+Данные загружены в таблицу
+Колонка id установлена как первичный ключ
+
+Типы данных в таблице в БД:
+- id: BIGINT
+- age: BIGINT
+- smoking: BOOLEAN
+- yellow_fingers: BOOLEAN
+- anxiety: BOOLEAN
+- peer_pressure: BOOLEAN
+- chronic_disease: BOOLEAN
+- fatigue: BOOLEAN
+- allergy: BOOLEAN
+- wheezing: BOOLEAN
+- alcohol_consuming: BOOLEAN
+- coughing: BOOLEAN
+- shortness_of_breath: BOOLEAN
+- swallowing_difficulty: BOOLEAN
+- chest_pain: BOOLEAN
+- lung_cancer: BOOLEAN
+- is_female: BOOLEAN
+Таблица успешно записана в БД
+Первые 10 строк таблицы:
+(1, 69, True, False, False, True, False, True, False, False, True, True, True, False, False, True, False)
+(2, 71, True, True, False, False, True, False, True, True, False, False, True, True, False, True, False)
+(3, 61, True, False, False, True, True, False, True, True, False, False, True, True, True, False, False)
+(4, 55, True, True, False, True, False, False, False, True, True, False, True, True, True, True, False)
+(5, 56, True, False, False, False, False, True, True, True, True, False, True, True, True, True, True)
+(6, 53, True, True, True, True, True, False, True, False, False, True, True, True, True, False, True)
+(7, 54, True, True, True, True, False, True, False, True, True, False, True, False, False, True, True)
+(8, 69, False, True, False, True, True, True, True, False, False, False, True, False, False, True, False)
+(9, 63, True, True, False, False, True, False, False, True, True, True, True, False, False, True, True)
+(10, 60, False, False, True, True, True, True, True, True, True, True, True, False, True, True, False)
+Названия колонок: id, age, smoking, yellow_fingers, anxiety, peer_pressure, chronic_disease, fatigue, allergy, wheezing, alcohol_consuming, coughing, shortness_of_breath, swallowing_difficulty, chest_pain, lung_cancer, is_female
+```
 
