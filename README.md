@@ -91,9 +91,14 @@ python ./experiments/write_to_db.py
 ```
 Загрузка осуществляется из файла *.parquet. В результате в базу данных записывается 70 строк датасета.
 
+<p align="center">
+<img width="964" height="226" alt="image" src="https://github.com/user-attachments/assets/d8ded631-db9e-4cc6-a7df-00a6b7d40ed4" />
+Первые 10 строк таблицы в базе данных
+</p>
+
 ## Проведение EDA
 
-Исследовательский анализ данных проведён в файле EDA.ipynb (находится в папке notebooks). Также в EDA.ipynb приведена визуализация для данного датасета, добавлена интерактивная визуализация с помощью poetry, интерактивные графики нахлдятся в виде html-файлов в папке notebooks.
+Исследовательский анализ данных проведён в файле EDA.ipynb (находится в папке notebooks). Также в EDA.ipynb приведена визуализация для данного датасета, добавлена интерактивная визуализация с помощью poetry, интерактивные графики находятся в виде html-файлов в папке notebooks (plot_lung_cancer.html, plot_fatigue.html, plot_chronic_disease.html), так как рендер ноутбука не поддерживает интерактивные графики.
 
 Ссылка на рендер ноутбука с проведением EDA "EDA.ipynb": 
 [Рендер](https://nbviewer.org/github/Therainbowmushroom/Data_engineering_project/blob/main/notebooks/EDA.ipynb)
