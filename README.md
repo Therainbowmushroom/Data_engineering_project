@@ -58,8 +58,11 @@ print(df_lung.head(10))
 </p>
 Приведённые типы данных в датафрейме:
 
+Колонки, содержащие только два различных значения, были приведены к типу bool, колонка gender была дополнительно заменена на бинарный признак is_female с типом данных bool.
+Также добавлена колонка id, содержащая значения типа int64.
+
 <p align="center">
-<img width="459" height="464" alt="image" src="https://github.com/user-attachments/assets/e5f03e63-8c72-4395-9714-8b96ec5c0004" />
+<img width="460" height="421" alt="image" src="https://github.com/user-attachments/assets/85fb29b8-bee9-4db1-8f6d-d517a0152de9" />
 </p>
 
 ## Загрузка датасета в базу данных:
