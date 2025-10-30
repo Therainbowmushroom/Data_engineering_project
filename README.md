@@ -40,7 +40,7 @@ conda env create -f environment.yml
 Используйте скрипт data_loader.py и команду:
 
 ```
-python data_loader.py
+python ./experiments/data_loader.py
 ```
 
 Результат команды: 
@@ -56,13 +56,20 @@ print(df_lung.head(10))
 <p align="center">
 <img width="520" height="510" alt="image" src="https://github.com/user-attachments/assets/b3ace559-f1f3-43d4-b592-72746b3c38ab" />
 </p>
-Приведённые типы данных в датафрейме:
+<p align="center">
+Занимаемая память: 2.5+ MB
+</p>
 
 Колонки, содержащие только два различных значения, были приведены к типу bool, колонка gender была дополнительно заменена на бинарный признак is_female с типом данных bool.
 Также добавлена колонка id, содержащая значения типа int64.
 
+Приведённые типы данных в датафрейме:
+
 <p align="center">
 <img width="460" height="421" alt="image" src="https://github.com/user-attachments/assets/85fb29b8-bee9-4db1-8f6d-d517a0152de9" />
+</p>
+<p align="center">
+Занимаемая память: 745.4 KB
 </p>
 
 ## Загрузка датасета в базу данных:
@@ -79,7 +86,7 @@ TB_NAME=название_таблицы
 ```
 Используйте скрипт write_to_db.py и команду в строке:
 ```
-python write_to_db.py
+python ./experiments/write_to_db.py
 ```
 ## Проведение EDA
 
