@@ -103,6 +103,18 @@ python ./experiments/write_to_db.py
 Ссылка на рендер ноутбука с проведением EDA "EDA.ipynb": 
 [Рендер](https://nbviewer.org/github/Therainbowmushroom/Data_engineering_project/blob/main/notebooks/EDA.ipynb)
 
+## Проведение ETL
+Структура модуля для проведения ETL:
+```
+Data_engineering_project/
+│
+├── etl/
+│   ├── __init__.py
+│   ├── extract.py     # Загрузка датасета из Google Drive и первичная валидация данных
+│   ├── load.py        # Вторичная валидация данных, загрузка трансформированного датасета в *.parquet и в БД
+│   ├── main.py        # Точка входа для запуска ETL-процесса
+│   └── transform.py   # Приведение типов данных исходного датасета
 
+```
 
 
