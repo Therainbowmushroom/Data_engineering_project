@@ -1,11 +1,11 @@
 import os
 import pandas as pd
 import pandera.pandas as pa
+from dataclasses import dataclass
 from pandera import Column, Check
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text, inspect
 from sqlalchemy.orm import Session
-from dataclasses import dataclass
 
 
 @dataclass
@@ -171,6 +171,10 @@ def check_data_upload(engine, config: Config, expected_count=70):
             result = s.execute(text(f'SELECT * FROM {config.tb_name} LIMIT 10'))
             columns = result.keys()
             rows = result.fetchall()
+            columns_info = inspector.get_columns(config.tb_name, schema='public')
+            print(f"\nТипы данных в таблице {config.tb_name} в БД:")
+            for col in columns_info:
+                print(f"- {col['name']}: {col['type']}")
             if actual_count == expected_count:
                 print("Таблица успешно записана в БД")
             else:

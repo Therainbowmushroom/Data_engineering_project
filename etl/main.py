@@ -1,7 +1,6 @@
 import os
-from dotenv import load_dotenv
-
 from dataclasses import dataclass
+from dotenv import load_dotenv
 from extract import (load_dataset_from_google_drive_url, validate_dataset_1, 
                      save_dataset_to_csv, raw_schema_1)
 from transform import (read_dataset_1, rename_columns, remove_duplicates, 
@@ -57,7 +56,7 @@ def etl_process():
 
     """Трансформация датасета (изменение названия колонок, приведение типов и тд)"""
 
-    print(f'Идёт чтение датасета из файла {config}...')
+    print(f'Идёт чтение датасета из файла {config.raw_csv_path}...')
     df = read_dataset_1(config)
     print('Идёт приведение названий колонок к общему виду...')
     df = rename_columns(df)
@@ -66,7 +65,7 @@ def etl_process():
     print('Идёт приведение типов и значений')
     preprocessor = LungDataPreprocessor()
     df = preprocessor.preprocess(df)
-    print(f'Идёт сохранение датасета как {config}')
+    print(f'Идёт сохранение датасета как {config.processed_csv_path}')
     save_dataset(df, config)
     if df is not None:
         print('Десять строк обработанного датасета:')

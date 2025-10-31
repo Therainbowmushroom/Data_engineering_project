@@ -1,9 +1,9 @@
+import os
 import pandas as pd
 import pandera.pandas as pa
 from pandera import Column, Check
-import os
-from dotenv import load_dotenv
 from dataclasses import dataclass
+from dotenv import load_dotenv
 
 
 @dataclass

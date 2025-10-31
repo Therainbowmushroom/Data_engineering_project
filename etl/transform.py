@@ -1,7 +1,7 @@
-import pandas as pd
 import os
-from dotenv import load_dotenv
+import pandas as pd
 from dataclasses import dataclass
+from dotenv import load_dotenv
 
 
 @dataclass
@@ -23,6 +23,7 @@ config = load_config()
 
 
 def read_dataset_1(config: Config):
+    """Чтение данных из csv-данных"""
     df_lung = pd.read_csv(config.raw_csv_path)
     if len(df_lung) > 0:
         print('Данные успешно прочитаны')
@@ -33,6 +34,7 @@ def read_dataset_1(config: Config):
 
 
 def rename_columns(df_lung):
+    """Меняет названия колонок: убирает пробелы, заменяет их на _ и понижает регистр"""
     columns = df_lung.columns
     dict_rename = {}
     for col in columns:
@@ -42,6 +44,7 @@ def rename_columns(df_lung):
 
 
 def check_remove_duplicates(count, length, length_after):
+    """Проверяет наличие дубликатов после их удаления"""
     if count == 0 and length == length_after:
         return 'Дубликатов нет'
     elif count != 0 and length != length_after:
@@ -51,6 +54,7 @@ def check_remove_duplicates(count, length, length_after):
 
 
 def remove_duplicates(df_lung):
+    """Удаляет дубликаты из датасета"""
     duplicate_count = df_lung.duplicated().sum()
     print(f"Найдено дубликатов: {duplicate_count}")
     length_df = len(df_lung)
@@ -106,4 +110,5 @@ class LungDataPreprocessor:
 
 
 def save_dataset(df, config: Config):
+    """Сохранение предобработанного датасета"""
     df.to_csv(config.processed_csv_path, index=False)
