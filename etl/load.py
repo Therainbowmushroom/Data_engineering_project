@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import pandera.pandas as pa
 from dataclasses import dataclass
-from pandera import Column, Check
 from dotenv import load_dotenv
+from pandera import Column, Check
 from sqlalchemy import create_engine, text, inspect
 from sqlalchemy.orm import Session
 
