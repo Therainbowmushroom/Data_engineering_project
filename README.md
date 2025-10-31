@@ -123,6 +123,26 @@ Data_engineering_project/
 ```
 **Описание компонентов модуля ETL**
 
+```etl/extract.py``` - осуществляет загрузку датасета из Google Drive, проводит проверки на соответствие типов данных в колонках, наличие пропусков и дубликатов согласно схеме в файле, сохраняет датасет в файл ./data/raw/df_lung.csv.
+
+```etl/transform.py``` - осуществляет загрузку датасета из файла ./data/raw/df_lung.csv, выполняет переименование названий колонок, приведение типов колонок, смена колонки gender на is_female и добавление колонки с id и сохранение предобработанного датасета в файл ./data/raw/df_lung_preprocess.csv
+
+```etl/load.py``` - читает файл ./data/raw/df_lung_preprocess.csv, проводит проверки на типы данных, пропуски и дубликаты, записывает файл ./data/processed/df_lung_preprocess.parquet, и загружает первые 70 строк в БД, устанавливает как первичный ключ колонку id, проверяет запись датасета в таблицу выводом десяти первых строк и типов колонок.
+
+```etl/main.py``` - осуществляет запуск всего процесса ETL, для успешного запуска необходим файл .env, в котором должны быть следующие поля:
+
+```
+FILE_ID=1zmNAMYzerjdrCZs51MmoWiHfvog-xdi3
+RAW_CSV_PATH=./data/raw/df_lung.csv
+PROCESSED_CSV_PATH=./data/raw/df_lung_preprocess.csv
+PARQUET_PATH=./data/processed/df_lung_preprocess.parquet
+DB_USER=имя_пользователя
+DB_PASSWORD=пароль
+DB_URL=url_базы_данных
+DB_PORT=код_порта_базы_данных
+DB_NAME=название_базы_данных
+TB_NAME=название_таблицы
+```
 
 Запуск ETL-процесса осуществляется командой:
 
