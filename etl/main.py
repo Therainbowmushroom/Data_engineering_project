@@ -87,14 +87,18 @@ def etl_process():
 
 
 def main():
-    parser = argparse.ArgumentParser(description='ETL process for lung data')
-    parser.add_argument('--extract-only', action='store_true', 
+    parser = argparse.ArgumentParser(
+    description='ETL process for lung data',
+    epilog='Note: One of the arguments --extract-only, --transform-only, --load-only, or --full-process is REQUIRED'
+    )
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--extract-only', action='store_true', 
                        help='Run only extraction phase')
-    parser.add_argument('--transform-only', action='store_true', 
+    group.add_argument('--transform-only', action='store_true', 
                        help='Run only transformation phase')
-    parser.add_argument('--load-only', action='store_true', 
+    group.add_argument('--load-only', action='store_true', 
                        help='Run only load phase')
-    parser.add_argument('--full-process', action='store_true',
+    group.add_argument('--full-process', action='store_true',
                         help='Run extract, transform, load processes')
     args = parser.parse_args()
     if args.extract_only:
@@ -118,8 +122,8 @@ def main():
         engine = setup_database_connection(config)
         df_parq = read_parquet(config)
         upload_data_with_primary_key(engine, df_parq, config)
-    else:
-        """В остальных случаях продится полный ETL-процесс"""
+    elif args.full_process:
+        """Проводится полный ETL-процесс"""
         etl_process()
 
 
