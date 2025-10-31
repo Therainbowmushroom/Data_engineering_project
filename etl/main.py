@@ -94,7 +94,7 @@ def main():
                        help='Run only transformation phase')
     parser.add_argument('--load-only', action='store_true', 
                        help='Run only load phase')
-    parser.add_argument('--full_process', action='store_true',
+    parser.add_argument('--full-process', action='store_true',
                         help='Run extract, transform, load processes')
     args = parser.parse_args()
     if args.extract_only:
