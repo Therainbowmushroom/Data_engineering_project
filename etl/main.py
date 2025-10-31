@@ -1,3 +1,4 @@
+import argparse
 import os
 from dataclasses import dataclass
 from dotenv import load_dotenv
@@ -85,5 +86,42 @@ def etl_process():
     check_data_upload(engine, config, expected_count=70)
 
 
+def main():
+    parser = argparse.ArgumentParser(description='ETL process for lung data')
+    parser.add_argument('--extract-only', action='store_true', 
+                       help='Run only extraction phase')
+    parser.add_argument('--transform-only', action='store_true', 
+                       help='Run only transformation phase')
+    parser.add_argument('--load-only', action='store_true', 
+                       help='Run only load phase')
+    parser.add_argument('--full_process', action='store_true',
+                        help='Run extract, transform, load processes')
+    args = parser.parse_args()
+    if args.extract_only:
+        """Только процесс загрузки датасета, первичная валидации и сохранение в *./csv"""
+        df_lung = load_dataset_from_google_drive_url(config)
+        validated_df = validate_dataset_1(df_lung)
+        save_dataset_to_csv(validated_df, config)
+    elif args.transform_only:
+        """Трансформация датасета (изменение названия колонок, приведение типов и тд)"""
+        df = read_dataset_1(config)
+        df = rename_columns(df)
+        df = remove_duplicates(df)
+        preprocessor = LungDataPreprocessor()
+        df = preprocessor.preprocess(df)
+        save_dataset(df, config)
+    elif args.load_only:
+        """Валидация предобработанных данных, запись их в файл parquet и загрузка в БД"""
+        df_lung = read_dataset_2(config)
+        df_lung = validate_dataset_2(df_lung)
+        write_parquet(df_lung, config)
+        engine = setup_database_connection(config)
+        df_parq = read_parquet(config)
+        upload_data_with_primary_key(engine, df_parq, config)
+    else:
+        """В остальных случаях продится полный ETL-процесс"""
+        etl_process()
+
+
 if __name__ == "__main__":
-    etl_process()
+    main()
